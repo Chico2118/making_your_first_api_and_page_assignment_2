@@ -1,5 +1,5 @@
 // Boilerplate Code for HTTP Status Code API
-const express = require('express');
+const express = require("express");
 const app = express();
 
 /*
@@ -52,5 +52,21 @@ List of Status Codes to Handle:
 
 const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`Status Code API is running on http://localhost:${PORT}`);
+  console.log(`Status Code API is running on http://localhost:${PORT}`);
+});
+
+app.get("/status-info?code=200", (req, res) => {
+  res.send("OK: The request has succeeded.");
+});
+
+app.get("/status-info?code=500", (req, res) => {
+  res.send(
+    "Internal Server Error: The server encountered an unexpected condition that prevented it from fulfilling the request."
+  );
+});
+
+app.get("/status-info?code=400", (req, res) => {
+  res.send(
+    "Bad Request: The server cannot process the request due to client-side errors (e.g., malformed syntax)."
+  );
 });
